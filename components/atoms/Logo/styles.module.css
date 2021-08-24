@@ -1,0 +1,18 @@
+.spanSlogan {
+    font-size: small;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 5px;
+}
+
+.brandName {
+    color: red;
+}
+
+.logoContainer {
+    background-color: black;
+    position: relative;
+    padding: 10px 0 10px 0;
+    min-width: 100px;
+}
