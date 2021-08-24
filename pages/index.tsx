@@ -10,7 +10,7 @@ const Home: NextPage = () => {
                 <title>Avalith FE Challenge</title>
                 <meta name="description" content="" />
             </Head>
-            <main className="container-md debug">
+            <main className="container">
                 <div>
                     <Logo />
                 </div>

@@ -3,6 +3,7 @@ import { fetchPopulars } from "core/adapters/Redux/Movies/Thunks";
 import { useAppDispatch, useAppSelector } from "core/frameworks/Redux/hooks";
 import { useEffect } from "react";
 import TMDBConfig from '../../../core/configs/TMDB';
+import Styles from './styles.module.scss';
 
 const PopularMovies = () => {
 
@@ -18,9 +19,17 @@ const PopularMovies = () => {
     }, [movies]);
 
     return (
-        <div>
+        <div className={Styles.PopularesContainer}>
+            <hr />
+            <h2>Populares</h2>
+            <hr />
             {movies.map(m => {
-                return (<CardMovie key={m.title} movieImagePath={TMDBConfig.imageBackUrl + m.backdrop_path} movieOverview={m.overview} />)
+                return (<CardMovie 
+                    key={m.title}
+                    movieTitle={m.title}
+                    movieImagePath={TMDBConfig.imageBackUrl + m.backdrop_path} 
+                    movieOverview={m.overview}
+                    />)
             })}
         </div>
     );
