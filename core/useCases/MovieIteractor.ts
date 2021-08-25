@@ -1,15 +1,23 @@
-import { MovieApi, PopularMovieResults } from './Axios/MovieApi';
+import TMDBConfigs from 'core/configs/TMDB';
+import { MovieApi, PopularMovieResults, MovieDetails, MovieVideo } from './Axios/MovieApi';
 import { Movie } from "core/entities/movie";
 
 export class MovieIteractor {
-    private _movie: Movie;
 
-    public constructor(oMovie = Movie.Create('', '','', '', 0, false)) {
-        this._movie = oMovie;
+    public async getMovie(iId: number): Promise<MovieDetails> {
+        const oMovie = await MovieApi.GetMovie(iId);
+
+        return oMovie;
     }
 
-    public getMovie(iId: number): Movie {
-        return this._movie;
+    public async getTrailer(iId: number): Promise<string> {
+        const movieVideos = await MovieApi.GetVideos(iId);
+        if(movieVideos.results.length === 0) return '';
+        
+        const oMovievideo = movieVideos.results[0];
+        if(oMovievideo.site.toLowerCase() !== 'youtube') return '';
+
+        return TMDBConfigs.youtubeBaseUrl + oMovievideo.key + "?autoplay=1";
     }
 
     public async getPopulars(): Promise<Record<keyof PopularMovieResults, unknown>[]> { 
@@ -21,4 +29,5 @@ export class MovieIteractor {
 
         return results ?? [];
     }
+
 }

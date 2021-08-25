@@ -16,7 +16,7 @@ const initialState: MoviesState = {
     isLoading: false,
 };
 
-export const movieSlice = createSlice({
+export const moviesSlice = createSlice({
     name: 'Movies',
     initialState,
     reducers: {
@@ -29,12 +29,11 @@ export const movieSlice = createSlice({
     },
     extraReducers: {
         [fetchPopulars.fulfilled.type]: (state, action) => {
-            console.log('action', action);
             state.movies = action.payload;
         }
     }
 });
 
-export const { popularsLoading, doneLoading } = movieSlice.actions;
+export const { popularsLoading, doneLoading } = moviesSlice.actions;
 
-export default movieSlice.reducer;
+export default moviesSlice.reducer;

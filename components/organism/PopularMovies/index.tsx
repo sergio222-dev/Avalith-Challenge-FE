@@ -1,4 +1,4 @@
-import CardMovie from "@molecules/CardMovie";
+import CardMovie from "@molecules/CardMoviePopulars";
 import { fetchPopulars } from "core/adapters/Redux/Movies/Thunks";
 import { useAppDispatch, useAppSelector } from "core/frameworks/Redux/hooks";
 import { useEffect } from "react";
@@ -14,10 +14,6 @@ const PopularMovies = () => {
         dispatch(fetchPopulars());
     }, []);
 
-    useEffect( () =>{
-        console.log('populars Movies: ',movies);
-    }, [movies]);
-
     return (
         <div className={Styles.PopularesContainer}>
             <hr />
@@ -25,10 +21,13 @@ const PopularMovies = () => {
             <hr />
             {movies.map(m => {
                 return (<CardMovie 
-                    key={m.title}
+                    key={m.id}
                     movieTitle={m.title}
                     movieImagePath={TMDBConfig.imageBackUrl + m.backdrop_path} 
                     movieOverview={m.overview}
+                    releaseDate={m.release_date}
+                    popularity={m.popularity}
+                    id={m.id}
                     />)
             })}
         </div>

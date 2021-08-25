@@ -1,24 +1,12 @@
 import type { NextPage } from 'next'
-import Head from 'next/head'
-import Logo from '@atoms/Logo/index';
 import PopularMovies from 'components/organism/PopularMovies';
+import React from 'react';
 
 const Home: NextPage = () => {
     return (
-        <div>
-            <Head>
-                <title>Avalith FE Challenge</title>
-                <meta name="description" content="" />
-            </Head>
-            <main className="container">
-                <div>
-                    <Logo />
-                </div>
-                <div>
-                    <PopularMovies />
-                </div>
-            </main>
-        </div>
+        <React.Fragment>
+            <PopularMovies />
+        </React.Fragment>
     )
 }
 
