@@ -3,7 +3,12 @@
     "baseUrl": ".",
     "paths": {
       "@atoms/*": ["components/atoms/*"],
-      "@molecules/*": ["components/molecules/*"]
+      "@molecules/*": ["components/molecules/*"],
+      "@organism/*": ["components/organism/*"],
+      "@hooks/*": ["components/hooks/*"],
+      "@adapters/*": ["core/adapters/*"],
+      "@configs/*": ["core/configs/*"],
+      "@useCases/*": ["core/useCases/*"]
     },
     "target": "es5",
     "lib": ["dom", "dom.iterable", "esnext"],

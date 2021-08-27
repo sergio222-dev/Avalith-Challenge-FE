@@ -1,9 +1,10 @@
+import { SearchDetails } from './MovieApi';
 import AxiosMovieInstance from 'core/frameworks/axios';
 
 interface PopularsResults {
-    results?: PopularMovieResults[];
+    results?: MovieDetailsResults[];
 }
-export interface PopularMovieResults {
+export interface MovieDetailsResults {
     title: string;
     id: number;
     original_title: string;
@@ -29,6 +30,14 @@ interface MovieVideoResults {
     results: Array<MovieVideo>;
 }
 
+export interface SearchDetails {
+    page: number;
+    total_pages: number;
+    total_results: number;
+    results: Array<MovieDetailsResults>,
+    text: string;
+}
+
 export interface MovieVideo {
     site: string;
     key: string;
@@ -51,6 +60,17 @@ export class MovieApi {
 
     public static async GetPopular(): Promise<PopularsResults> {
         const { data } = await AxiosMovieInstance.get<PopularsResults>(`/movie/popular`);
+
+        return data;
+    }
+
+    public static async Search(sText: string, iPage: number | null) {
+
+        const params = iPage !== null ? { query: sText, page: iPage } : { query: sText }
+
+        const { data } = await AxiosMovieInstance.get<SearchDetails>(`/search/movie`, {
+            params,
+        })
 
         return data;
     }

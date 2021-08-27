@@ -1,0 +1,14 @@
+.inputSearch {
+    background-color: black;
+    border: none;
+    border-bottom: red 2px solid;
+    border-radius: 0%;
+    color: white;
+    min-width: 100px;
+    margin-right: 1rem;
+
+    &:focus {
+        background-color: black;
+        color: white;
+    }
+}

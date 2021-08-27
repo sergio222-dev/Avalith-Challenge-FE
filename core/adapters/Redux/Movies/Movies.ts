@@ -1,9 +1,9 @@
-import { PopularMovieResults } from './../../../useCases/Axios/MovieApi';
+import { MovieDetailsResults } from './../../../useCases/Axios/MovieApi';
 import { createSlice } from '@reduxjs/toolkit';
 import { fetchPopulars } from './Thunks';
 
 export interface MoviesState {
-    movies: Array<PopularMovieResults>;
+    movies: Array<MovieDetailsResults>;
     isLoading: boolean;
 }
 

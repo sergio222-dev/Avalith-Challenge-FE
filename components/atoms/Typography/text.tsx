@@ -1,13 +1,13 @@
-import { FC } from "react";
+import React, { FC, HTMLAttributes } from "react";
 import styles from './typography.module.scss';
 
-interface TextProps {
+interface TextProps extends HTMLAttributes<HTMLParagraphElement> {
     className?: string;
 }
 
-const Text: FC<TextProps> = ({children, className}) => {
+const Text: FC<TextProps> = ({children, className, ...props}) => {
     return (
-        <p className={styles.TypographyP + " " + className ?? ''}>
+        <p className={styles.TypographyP + " " + className ?? ''} {...props}>
             {children}
         </p>
     );

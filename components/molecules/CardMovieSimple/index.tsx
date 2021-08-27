@@ -1,7 +1,10 @@
-import { useRouter } from 'next/dist/client/router';
-import Image from 'next/image';
 import React from 'react';
-import Styles from './CardMoviePopulars.module.scss';
+import Image from 'next/image';
+import Styles from './CardMovieSimple.module.scss';
+import { useRouter } from 'next/dist/client/router';
+import { cleanSearch } from '@adapters/Redux/Search/Search';
+import { useAppDispatch } from 'core/frameworks/Redux/hooks';
+
 interface CardMovieProps {
     movieImagePath: string;
     movieOverview: string;
@@ -14,10 +17,17 @@ interface CardMovieProps {
 const CardMovie: React.FC<CardMovieProps> = ({ movieImagePath, id, movieTitle, releaseDate, popularity }) => {
 
     const router = useRouter();
+    const dispatch = useAppDispatch();
 
     return (
         <React.Fragment>
-                <div className={Styles.CardMovieContainer + " container "} onClick={() => { router.push(`/movie/${id}`);}}>
+                <div 
+                className={Styles.CardMovieContainer + " container "} 
+                onClick={() => { 
+                    dispatch(cleanSearch())
+                    router.push(`/movie/${id}`);
+                }}
+                >
                     <div className="row">
                         <div className="col-md">
                             <Image src={movieImagePath} alt="imagen place holder" width="533" height="300" />

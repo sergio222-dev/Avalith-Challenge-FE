@@ -37,7 +37,7 @@ const MovieViewer = () => {
                 }
                 {   !isLoading && (
                     <div className="row">
-                            <div className="col-4">
+                            <div className="col-md-4">
                                 <Image
                                 src={TMDBConfigs.imagePosterUrl + movie.poster_path}
                                 width="300"
@@ -45,7 +45,7 @@ const MovieViewer = () => {
                                 alt="poster"
                                 />
                             </div>
-                            <div className="col-8">
+                            <div className="col-md-8">
                                 <CardMovieInfo 
                                     overview={movie?.overview ?? 'No overview'}
                                     title={movie.title}

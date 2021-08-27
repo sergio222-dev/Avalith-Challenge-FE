@@ -14,5 +14,7 @@
     background-color: black;
     position: relative;
     padding: 10px 0 10px 0;
-    min-width: 100px;
+    /* min-width: 100px; */
+    user-select: none;
+    cursor: pointer;
 }

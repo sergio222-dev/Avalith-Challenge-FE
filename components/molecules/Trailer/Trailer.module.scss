@@ -1,0 +1,32 @@
+@import "../../../node_modules/bootstrap/scss/mixins/breakpoints";
+@import "../../../node_modules/bootstrap/scss/functions";
+@import "../../../node_modules/bootstrap/scss/variables";
+
+
+.ModalDialog {
+    width: 100%;
+    background-color: black;
+    //padding-top: 60%;
+    // height: 1000px;
+
+    .ModalContent {
+        height: 80vh;
+    }
+    
+    .ModalBody {
+        background-color: black;
+        border: red 1px solid;
+    }
+}
+
+
+@include media-breakpoint-up(md) {
+    .ModalDialog{
+        width: 90%;
+        max-width: none;
+
+        .ModalContent {
+            height: 90vh;
+        }
+    }
+}

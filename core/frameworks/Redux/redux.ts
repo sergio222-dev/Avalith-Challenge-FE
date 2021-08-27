@@ -1,11 +1,13 @@
 import { configureStore } from "@reduxjs/toolkit";
-import moviesReducer from '../../adapters/Redux/Movies/Movies';
-import movieReducer from '../../adapters/Redux/Movie/Movie';
+import movieReducer from '@adapters/Redux/Movie/Movie';
+import moviesReducer from '@adapters/Redux/Movies/Movies';
+import searchReducer from '@adapters/Redux/Search/Search';
 
 const store = configureStore({
     reducer: {
         movies: moviesReducer,
         movie: movieReducer,
+        search: searchReducer,
     },
 });
 

@@ -1,5 +1,5 @@
 import TMDBConfigs from 'core/configs/TMDB';
-import { MovieApi, PopularMovieResults, MovieDetails, MovieVideo } from './Axios/MovieApi';
+import { MovieApi, MovieDetailsResults, MovieDetails, MovieVideo, SearchDetails } from './Axios/MovieApi';
 import { Movie } from "core/entities/movie";
 
 export class MovieIteractor {
@@ -11,16 +11,18 @@ export class MovieIteractor {
     }
 
     public async getTrailer(iId: number): Promise<string> {
-        const movieVideos = await MovieApi.GetVideos(iId);
-        if(movieVideos.results.length === 0) return '';
-        
-        const oMovievideo = movieVideos.results[0];
+        const arMovieVideos = await MovieApi.GetVideos(iId);
+        if(arMovieVideos.results.length === 0) return '';
+
+        const arMovieVideosTrailer = arMovieVideos.results.filter(m => m.type.toLowerCase() === "trailer")
+
+        const oMovievideo = arMovieVideosTrailer[0];
         if(oMovievideo.site.toLowerCase() !== 'youtube') return '';
 
         return TMDBConfigs.youtubeBaseUrl + oMovievideo.key + "?autoplay=1";
     }
 
-    public async getPopulars(): Promise<Record<keyof PopularMovieResults, unknown>[]> { 
+    public async getPopulars(): Promise<Record<keyof MovieDetailsResults, unknown>[]> { 
         const { results } = await MovieApi.GetPopular(); //TODO movieApi is coupled in UseCases
 
         const arMovie = results?.map<Movie>(m => {
@@ -28,6 +30,13 @@ export class MovieIteractor {
         }) ?? [];
 
         return results ?? [];
+    }
+
+    public async getSearch(sText: string, iPage: number | null = null ): Promise<SearchDetails> {
+        const oSearch = await MovieApi.Search(sText, iPage);
+        oSearch.text = sText;
+
+        return oSearch;
     }
 
 }

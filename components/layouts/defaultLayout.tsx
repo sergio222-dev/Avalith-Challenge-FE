@@ -1,11 +1,16 @@
 import Logo from "@atoms/Logo";
+import MovieSearch from "@organism/MovieSearch";
+import Search from "@organism/Search";
+import { useAppSelector } from "core/frameworks/Redux/hooks";
 import React from "react";
+import styles from "./DefaultLayout.module.scss";
 
-const defaultLayout: React.FC = ({children}) => {
+const DefaultLayout: React.FC = ({children}) => {
     return (
         <div className="container">
-            <div>
+            <div className={styles.navbarContainer}>
                 <Logo />
+                <Search />
             </div>
             <div>
                 <main>
@@ -17,4 +22,4 @@ const defaultLayout: React.FC = ({children}) => {
 }
 
 
-export default defaultLayout;
+export default DefaultLayout;
