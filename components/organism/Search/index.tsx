@@ -29,12 +29,11 @@ const Search = () => {
     }, [router, textSearch]);
     
     useEffect(() => {
-        // if(router.route !== '/') router.push('/');
         debounceOnChange(textSearch);
-    }, [textSearch, debounceOnChange, router]);
+    }, [textSearch, debounceOnChange]);
 
     useEffect(() => {
-        if(text === textSearch) return;
+        if(text !== '') return;
         setText(text);
     }, [text]);
     

@@ -1,5 +1,7 @@
 .navbarContainer {
-    display: flex;
-    padding: 1rem 0 1rem 0;
-    justify-content: space-between;
+    background-color: black;
+    // https://cssgenerator.org/box-shadow-css-generator.html
+    box-shadow: 0px 9px 8px -5px rgba(255,106,106,0.35);
+    -webkit-box-shadow: 0px 9px 8px -5px rgba(255,106,106,0.35);
+    -moz-box-shadow: 0px 9px 8px -5px rgba(255,106,106,0.35);
 }
